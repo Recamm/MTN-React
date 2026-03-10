@@ -1,8 +1,9 @@
-function crearTarea(titulo, descripcion) {
+function crearTarea(titulo, descripcion, completada = false, id = null) {
     return {
+        id: id,
         titulo: titulo,
         descripcion: descripcion,
-        completada: false
+        completada: completada
     };
 }
 
