@@ -1,3 +1,5 @@
+const { buscarTarea } = require('../services/services');
+
 function crearTarea(titulo, descripcion, completada = false, id = null) {
     return {
         id: id,
@@ -7,10 +9,19 @@ function crearTarea(titulo, descripcion, completada = false, id = null) {
     };
 }
 
-function mostrarTarea(tarea) {
+function verTarea(tarea){
     console.log(`Titulo: ${tarea.titulo}
 Descripcion : ${tarea.descripcion} 
-Completada: ${tarea.completada ? 'Completa' : 'Pendiente'}`); 
+Completada: ${tarea.completada ? 'Completa' : 'Pendiente'}`); }
+
+function mostrarTarea(tareas, id) {
+    verTarea(buscarTarea(tareas, id))
 }
 
-module.exports = {crearTarea, mostrarTarea};
+function listarTareas(tareas){
+    tareas.forEach(t => {
+        verTarea(t);
+    });
+}
+
+module.exports = {crearTarea, mostrarTarea, verTarea, listarTareas};
